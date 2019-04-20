@@ -1,9 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage ('Checkout Code') {
+        stage ('Checkout Docker Code') {
             steps {
-            checkout SCM
+            checkout([$class: 'GitSCM', 
+              branches: [[name: '*/master']], 
+              doGenerateSubmoduleConfigurations: false, 
+              extensions: [[$class: 'CleanCheckout']], 
+              submoduleCfg: [], 
+              userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/smandava79/cicd-pipeline-train-schedule-docker.git']]
+              ])
             }
         }
         stage('Build') {
