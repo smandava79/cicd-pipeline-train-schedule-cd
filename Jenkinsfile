@@ -4,10 +4,10 @@ pipeline {
         stage ('Checkout Docker Code') {
             steps {
             checkout([$class: 'GitSCM', 
-              branches: [[name: '*/master']], 
-              doGenerateSubmoduleConfigurations: false, 
+     //         branches: [[name: '*/master']], 
+     /*         doGenerateSubmoduleConfigurations: false, 
               extensions: [[$class: 'CleanCheckout']], 
-              submoduleCfg: [], 
+              submoduleCfg: [], */
               userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/smandava79/cicd-pipeline-train-schedule-docker.git']]
               ])
             }
